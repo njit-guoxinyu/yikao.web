@@ -12,9 +12,23 @@
     <div>
         <input type="text" name="pwd" placeholder="请输入密码">
     </div>
+    <div>
+        <input type="text" name="captcha" placeholder="请输入验证码">
+        <a href="javascript:reloadCaptcha()"><img id="captchaImg" src="/captcha"/></a>
+        <!--触发点击事件，需要超链接a-->
+    </div>
     <div>记住我</div>
     <button type="submit">登录</button>
 </form>
+
+<script>
+    function reloadCaptcha() {
+        var captchaImg = document.getElementById("captchaImg");
+        captchaImg.src = "/captcha?t="+(new Date().getTime());
+        //动态替换src的值，通过时间戳来更新，url的参数变了,浏览器就会自动加载
+        //时间戳更新：这是一个动态更新方案
+    }
+</script>
 
 </body>
 </html>
